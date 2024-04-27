@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEDE1"
+    tools:context=".QuestionActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewInstruction"
+        android:layout_width="385dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Инструкция "
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewInformationAboutWork"
+            android:layout_width="387dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="Работа приложения основана на отправке СМС-команд с Вашего номера телефона трекеру и обработки СМС-ответа. Если ответ не приходит, повторите действие позже."
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInstruction" />
+
+    <TextView
+        android:id="@+id/textViewConnectionInformation"
+        android:layout_width="304dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="Для начала работы, необходимо привязать Ваш номер телефона к номеру СИМ-карты, установленной в GPS-трекере."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInformationAboutWork" />
+
+    <ImageView
+        android:id="@+id/imageViewBindingOnInstruction"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/binding" />
+
+    <ImageView
+        android:id="@+id/imageViewGetMapInstruction"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBindingOnInstruction"
+        app:srcCompat="@drawable/geodata" />
+
+    <TextView
+        android:id="@+id/textViewGetMapDataInformation"
+        android:layout_width="304dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="Местоположение питомца будет доступно на Google карте с возможностью построить маршрут от текущего местоположения до найденного питомца."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConnectionInformation" />
+
+    <ImageView
+        android:id="@+id/imageViewChargeInstruction"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewGetMapInstruction"
+        app:srcCompat="@drawable/batary" />
+
+    <TextView
+        android:id="@+id/textViewChargeInformation"
+        android:layout_width="304dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="Получение информации об уровне заряда батареи GPS-трекера."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGetMapDataInformation" />
+
+    <ImageView
+        android:id="@+id/imageViewResetInstrution"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewChargeInstruction"
+        app:srcCompat="@drawable/reset" />
+
+    <TextView
+        android:id="@+id/textViewResetInstruction"
+        android:layout_width="304dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="Перезагрузить GPS-трекер."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChargeInformation" />
+
+    <ImageView
+        android:id="@+id/imageViewMapHistoryInformation"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewResetInstrution"
+        app:srcCompat="@drawable/mapstory" />
+
+    <TextView
+        android:id="@+id/textViewMapHistoryInformation"
+        android:layout_width="304dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="Просмотр истории перемещений питомца, в соответствии с выбранным фильтром."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResetInstruction" />
+
+    <ImageView
+        android:id="@+id/imageViewAmbulanceInformation"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMapHistoryInformation"
+        app:srcCompat="@drawable/ambulance" />
+
+    <TextView
+        android:id="@+id/textViewAmbulanseInformation"
+        android:layout_width="304dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Отображение всех ветеринарных клиник города с возможностью построения маршрута к выбранной вет. клиники от Вашего местоположения."
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMapHistoryInformation" />
+
+    <ImageView
+        android:id="@+id/imageViewInformAboutPat"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAmbulanceInformation"
+        app:srcCompat="@drawable/informationpat" />
+
+    <TextView
+        android:id="@+id/textViewInformAboutPat"
+        android:layout_width="304dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Информация о Вашем питомце."
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAmbulanseInformation" />
+
+    <ImageView
+        android:id="@+id/imageViewResetSettingsInformation"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInformAboutPat"
+        app:srcCompat="@drawable/settingsreset" />
+
+        <TextView
+            android:id="@+id/textViewResetSettingsInformation"
+            android:layout_width="304dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:text="Сброс всех настроек GPS-трекера."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInformAboutPat" />
+
+        <ImageView
+            android:id="@+id/imageMainPAgeInformation"
+            android:layout_width="72dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewResetSettingsInformation"
+            app:srcCompat="@drawable/photo" />
+
+        <TextView
+            android:id="@+id/textMainPageInformation"
+            android:layout_width="304dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:text="Установка фотографии питомца."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewResetSettingsInformation" />
+
+        <ImageButton
+            android:id="@+id/imageButtonBackInformation"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFEDE1"
+            app:layout_constraintStart_toStartOf="@+id/textViewInstruction"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backarrow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
