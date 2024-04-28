@@ -8,84 +8,66 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.top_top.MainActivity.Companion.SMS_PERMISSION_CODE
 
 class ButtonsFunctions {
-    private var smsReceiver: SmsReceiver? = null
-    private var smsFromTracker: String = ""
-    private var smsReceiverForCharge: SmsReceiver? = null
+    var smsReceiver: SmsReceiver? = null
+    var smsFromTracker: String = ""
+    var smsReceiverForCharge: SmsReceiver? = null
 
-
-    fun initSmsReceiver(context: Context) {
-        smsReceiver = SmsReceiver()
-        smsReceiver?.setOnSmsReceivedListener(object : SmsReceiver.OnSmsReceivedListener {
-            override fun onSmsReceived(message: String) {
-                smsFromTracker = message
-                openMapActivity(context)
+    fun obtainSmsFromTracker(): String {
+        return smsFromTracker
+    }
+    fun onRequestPermissionsResult(activity: Activity, requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            MainActivity.SMS_PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initSmsReceiver(activity)
+                }
             }
-        })
-        context.registerReceiver(smsReceiver, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
-    }
-
-    fun onDestroy(context: Context) {
-        context.unregisterReceiver(smsReceiver)
-    }
-
-    fun onRequestPermissionsResult(
-        context: Context,
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == MainActivity.SMS_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Разрешение предоставлено, инициализируем BroadcastReceiver
-                initSmsReceiver(context)
-                initBatteryChargeReceiver(context)
-            } else {
-                // Разрешение не предоставлено, сообщаем об этом пользователю
-                // textView.text = "Без разрешения на получение SMS невозможно прочитать сообщения"
+            else -> {
+                // Обработка других запросов разрешений, если необходимо
             }
         }
     }
-
-    fun getGeoDataFunction(context: Context) {
-        if (ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.SEND_SMS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+    fun initSmsReceiver(context: Context) {
+        smsReceiver = SmsReceiver()
+        val filter = IntentFilter()
+        filter.addAction("android.provider.Telephony.SMS_RECEIVED")
+        context.registerReceiver(smsReceiver, filter)
+    }
+    fun getGeoDataFunction(context: Context, smsFromTracker: String) {
+        // Проверяем, есть ли у приложения разрешение на отправку SMS
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS)
+            != PackageManager.PERMISSION_GRANTED) {
+            // Если разрешение не предоставлено, запрашиваем его у пользователя
             ActivityCompat.requestPermissions(
                 context as Activity,
                 arrayOf(Manifest.permission.SEND_SMS),
-                MainActivity.SMS_PERMISSION_CODE
+                SMS_PERMISSION_CODE
             )
         } else {
+            // Если разрешение уже предоставлено, можно выполнять операции отправки SMS
             val smsSender = SmsSender()
-            smsSender.sendSms("999")
+            smsSender.sendSms("999") // Пример отправки SMS
         }
     }
 
-    fun openMapActivity(context: Context) {
-        // Создаем Intent для открытия MapActivity
-        val intent = Intent(context, MapActivity::class.java)
-        val patOnMap = smsFromTracker.substring(8)
-        intent.putExtra("PAT_ON_MAP", patOnMap)
-        context.startActivity(intent)
-    }
 
-    fun initBatteryChargeReceiver(context: Context) {
-        smsReceiverForCharge = SmsReceiver()
-        smsReceiverForCharge?.setOnSmsReceivedListener(object : SmsReceiver.OnSmsReceivedListener {
-            override fun onSmsReceived(message: String) {
-                smsFromTracker = message
-                BatteryCharge(context)
-            }
-        })
-        context.registerReceiver(smsReceiverForCharge, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
-    }
+
+    //  fun initBatteryChargeReceiver(context: Context) {
+  //     smsReceiverForCharge = SmsReceiver()
+   //     smsReceiverForCharge?.setOnSmsReceivedListener(object : SmsReceiver.OnSmsReceivedListener {
+    //        override fun onSmsReceived(message: String) {
+   //             smsFromTracker = message
+    //            BatteryCharge(context)
+    //        }
+    //    })
+    //    context.registerReceiver(smsReceiverForCharge, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
+   // }
 
     fun BatteryCharge(context: Context) {
         if (ContextCompat.checkSelfPermission(
