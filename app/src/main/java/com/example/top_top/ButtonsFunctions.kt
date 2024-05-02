@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.top_top.MainActivity.Companion.SMS_PERMISSION_CODE
@@ -52,7 +53,9 @@ class ButtonsFunctions {
         } else {
             // Если разрешение уже предоставлено, можно выполнять операции отправки SMS
             val smsSender = SmsSender()
-            smsSender.sendSms("999") // Пример отправки SMS
+            smsSender.sendSms("999")
+            val intent = Intent(context, LoadActivity::class.java)
+            context.startActivity(intent)
         }
     }
 
@@ -69,33 +72,8 @@ class ButtonsFunctions {
     //    context.registerReceiver(smsReceiverForCharge, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
    // }
 
-    fun BatteryCharge(context: Context) {
-        if (ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.SEND_SMS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                context as Activity,
-                arrayOf(Manifest.permission.SEND_SMS),
-                MainActivity.SMS_PERMISSION_CODE
-            )
-        } else {
-            val smsSender = SmsSender()
-            smsSender.sendSms("999")
-        }
-    }
 
-    private fun showAlert(context: Context, batteryCharge: String) {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("Battery Charge")
-        builder.setMessage("Battery charge: $batteryCharge")
-        builder.setPositiveButton("OK", null)
-        val dialog = builder.create()
-        dialog.show()
 
-        // Закрываем SmsReceiver после отображения AlertDialog
-        context.unregisterReceiver(smsReceiverForCharge)
-    }
+
 
 }

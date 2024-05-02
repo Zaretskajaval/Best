@@ -1,5 +1,9 @@
 package com.example.top_top
+import android.content.Context
+import android.content.Intent
 import android.telephony.SmsManager
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 class SmsSender {
     fun sendSms(message: String) {
@@ -10,5 +14,6 @@ class SmsSender {
 
         // Отправляем SMS
         smsManager.sendTextMessage(phoneNumber, null, message, null, null)
+
     }
 }

@@ -267,6 +267,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:background="#FFEDE1"
+            android:onClick="BackInstructionToMain"
             app:layout_constraintStart_toStartOf="@+id/textViewInstruction"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/backarrow" />

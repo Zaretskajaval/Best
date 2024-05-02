@@ -11,11 +11,18 @@ import com.example.top_top.ButtonsFunctions
 import com.example.top_top.MainActivity
 import com.example.top_top.MapActivity
 import com.example.top_top.R
+import androidx.appcompat.app.AppCompatActivity
+
 
 
 class SmsReceiver : BroadcastReceiver() {
+
     companion object {
         const val TRACKER_NUMBER = "+79213794299"
+        private var tempImageView: ImageView? = null
+        fun setTempImageView(imageView: ImageView) {
+            tempImageView = imageView
+        }
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -29,11 +36,14 @@ class SmsReceiver : BroadcastReceiver() {
                     val messageBody = message.messageBody
 
                     if (sender == TRACKER_NUMBER) {
+                        (context as? Activity)?.finish()
                         // При получении SMS от указанного номера, открываем MapActivity
-                        Toast.makeText(context, "Received SMS from tracker", Toast.LENGTH_SHORT).show()
                         val intent = Intent(context, MapActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context?.startActivity(intent)
+                        val sharedPreferences = context?.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+                        val substring = messageBody.substring(4, 7)
+                        sharedPreferences?.edit()?.putString("chargePercent", substring)?.apply()
                     }
                 }
             }

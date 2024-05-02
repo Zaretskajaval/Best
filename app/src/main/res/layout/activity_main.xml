@@ -130,10 +130,10 @@
         android:src="@drawable/mapstory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.315" />
 
     <ImageButton
         android:id="@+id/imageButtonResetTracker"
@@ -152,20 +152,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButtonChargeLavel"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:background="@drawable/batary"
-        android:onClick="BatteryCharge"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
-
-    <ImageButton
         android:id="@+id/imageButtonBinding"
         android:layout_width="90dp"
         android:layout_height="90dp"
@@ -179,4 +165,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVetInformation"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/circle_shape"
+        android:onClick="VetInformation"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.689"
+        app:srcCompat="@drawable/vet" />
 </androidx.constraintlayout.widget.ConstraintLayout>

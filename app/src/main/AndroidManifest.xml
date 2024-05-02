@@ -13,10 +13,11 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,9 +29,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".LoadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VetInformation"
+            android:exported="false" />
+        <activity
             android:name=".QuestionActivity"
             android:exported="false" />
-
         <activity
             android:name=".PetInformationActivity"
             android:exported="false" />
@@ -50,6 +56,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
 </manifest>

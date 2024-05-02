@@ -1,5 +1,6 @@
 package com.example.top_top
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.GestureDetector
@@ -14,5 +15,13 @@ class QuestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
+    }
+
+    fun BackInstructionToMain(view: View) {
+        finish()
+
+        // Запуск MainActivity
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

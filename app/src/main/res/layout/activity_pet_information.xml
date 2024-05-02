@@ -5,27 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PetInformationActivity">
-
-    <LinearLayout
-        android:id="@+id/linear_layout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPetInformation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFD6EF"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/backarrow"
+        app:subtitleTextColor="@color/white"
+        app:title="Информация о питомце"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:titleMargin="5dp"
+        app:titleMarginStart="30dp"
+        app:titleTextColor="@color/black" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Select option" />
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

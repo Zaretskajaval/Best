@@ -22,7 +22,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:titleMargin="10dp"
-        app:titleMarginStart="120dp"
+        app:titleMarginStart="20dp"
         app:titleTextColor="@color/black" />
 
     <WebView
@@ -34,6 +34,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarMap" />
+
+    <ImageView
+        android:id="@+id/imageViewChargeView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarMap"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/batary" />
+
+    <TextView
+        android:id="@+id/textViewChargePercent"
+        android:layout_width="27dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextViewChargeOnMap"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarMap"
+        app:layout_constraintStart_toEndOf="@+id/imageViewChargeView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

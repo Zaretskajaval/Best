@@ -16,6 +16,7 @@ import android.location.LocationManager
 import android.net.Uri
 import android.os.Handler
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -43,15 +44,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val smsReceiver = SmsReceiver()
-        val intentFilter = IntentFilter()
-        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
-        registerReceiver(smsReceiver, intentFilter)
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.RECEIVE_SMS),
-            SMS_PERMISSION_CODE
-        )
+
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         imageButtonMainPhoto = findViewById(R.id.imageButtonMainPhoto)
         photoChoice = PhotoChoice(this, imageButtonMainPhoto)
@@ -84,8 +77,7 @@ class MainActivity : AppCompatActivity() {
             // Если разрешение не предоставлено, запрашиваем его у пользователя
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(
-                    Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_EXTERNAL_STORAGE
+                arrayOf(Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_EXTERNAL_STORAGE
                 ),
                 SMS_PERMISSION_CODE
 
@@ -95,16 +87,10 @@ class MainActivity : AppCompatActivity() {
             buttonsFunctions.initSmsReceiver(this)
         }
 
+
+
     }
-  //  fun simulateIncomingSms(sender: String, messageBody: String) {
-    //    val intent = Intent("android.provider.Telephony.SMS_RECEIVED")
-    //    val bundle = Bundle().apply {
-    //        putString("sender", sender)
-    //        putString("messageBody", messageBody)
-     //   }
-     //   intent.putExtras(bundle)
-    //    sendBroadcast(intent)
-   // }
+
 
     private fun requestStoragePermission() {
         if (ContextCompat.checkSelfPermission(
@@ -165,7 +151,6 @@ class MainActivity : AppCompatActivity() {
         }, 500)
         val smsFromTracker = buttonsFunctions.obtainSmsFromTracker()
         buttonsFunctions.getGeoDataFunction(this, smsFromTracker)
-       // simulateIncomingSms("+123456789", "Привет, это тестовое сообщение!")
 
     }
     override fun onRequestPermissionsResult(
@@ -237,17 +222,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        fun BatteryCharge(view: View) {
-            val imageButtonBatteryCharge = findViewById<ImageButton>(R.id.imageButtonChargeLavel)
-
-            imageButtonBatteryCharge.setImageResource(R.drawable.inner_charge)
-            // Задержка на полсекунды
-            Handler().postDelayed({
-                // Возвращаем первоначальное изображение после задержки
-                imageButtonBatteryCharge.setImageResource(R.drawable.batary)
-            }, 500)
-            buttonsFunctions.BatteryCharge(this)
-        }
 
         fun InformationAboutPat(view: View) {
             val imageButtonInformationAboutPat =
@@ -259,6 +233,8 @@ class MainActivity : AppCompatActivity() {
                 // Возвращаем первоначальное изображение после задержки
                 imageButtonInformationAboutPat.setImageResource(R.drawable.informationpat)
             }, 500)
+            val intent = Intent(this, PetInformationActivity::class.java)
+            startActivity(intent)
         }
 
         fun SettingsReset(view: View) {
@@ -313,6 +289,20 @@ class MainActivity : AppCompatActivity() {
             context.startActivity(intent)
         }
 
+    fun VetInformation(view: View) {
+        val imageButtonVetInformation =
+            findViewById<ImageButton>(R.id.imageButtonVetInformation)
 
+        imageButtonVetInformation.setImageResource(R.drawable.innervet)
+        // Задержка на полсекунды
+        Handler().postDelayed({
+            // Возвращаем первоначальное изображение после задержки
+            imageButtonVetInformation.setImageResource(R.drawable.vet)
+        }, 500)
+        val intent = Intent(this, VetInformation::class.java)
+        startActivity(intent)
     }
+
+
+}
 

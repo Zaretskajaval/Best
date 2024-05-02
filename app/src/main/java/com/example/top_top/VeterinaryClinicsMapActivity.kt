@@ -1,5 +1,6 @@
 package com.example.top_top
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.MenuItem
@@ -57,12 +58,15 @@ class VeterinaryClinicsMapActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
                 finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
 
 }
