@@ -1,15 +1,11 @@
 package com.example.top_top
 
-import SmsReceiver
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.os.Bundle
-import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.top_top.MainActivity.Companion.SMS_PERMISSION_CODE
@@ -62,8 +58,8 @@ class ButtonsFunctions {
 
 
     //  fun initBatteryChargeReceiver(context: Context) {
-  //     smsReceiverForCharge = SmsReceiver()
-   //     smsReceiverForCharge?.setOnSmsReceivedListener(object : SmsReceiver.OnSmsReceivedListener {
+  //     smsReceiverForCharge = com.example.top_top.SmsReceiver()
+   //     smsReceiverForCharge?.setOnSmsReceivedListener(object : com.example.top_top.SmsReceiver.OnSmsReceivedListener {
     //        override fun onSmsReceived(message: String) {
    //             smsFromTracker = message
     //            BatteryCharge(context)

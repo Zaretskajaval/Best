@@ -1,6 +1,5 @@
 package com.example.top_top
 
-import SmsReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,13 +9,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Handler
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -44,7 +41,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // Проверяем разрешение на получение SMS
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECEIVE_SMS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Если разрешение не предоставлено, запрашиваем его у пользователя
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.RECEIVE_SMS),
+                SMS_PERMISSION_CODE
+            )
+        } else {
+            // Если разрешение уже предоставлено, инициализируем BroadcastReceiver для приема SMS
+            buttonsFunctions.initSmsReceiver(this)
 
+        }
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         imageButtonMainPhoto = findViewById(R.id.imageButtonMainPhoto)
         photoChoice = PhotoChoice(this, imageButtonMainPhoto)
@@ -68,29 +81,29 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        // Проверяем разрешение на получение SMS
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.RECEIVE_SMS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // Если разрешение не предоставлено, запрашиваем его у пользователя
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_EXTERNAL_STORAGE
-                ),
-                SMS_PERMISSION_CODE
-
-            )
-        } else {
-            // Если разрешение уже предоставлено, инициализируем BroadcastReceiver для приема SMS
-            buttonsFunctions.initSmsReceiver(this)
-        }
-
 
 
     }
 
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            SMS_PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Разрешение на получение SMS предоставлено, инициализируем BroadcastReceiver
+                    buttonsFunctions.initSmsReceiver(this)
+                    // Теперь запросите разрешение на доступ к внешнему хранилищу
+                    requestStoragePermission()
+                }
+            }
+            // Обработка других кодов запроса разрешений, если они используются
+        }
+    }
 
     private fun requestStoragePermission() {
         if (ContextCompat.checkSelfPermission(
@@ -153,21 +166,7 @@ class MainActivity : AppCompatActivity() {
         buttonsFunctions.getGeoDataFunction(this, smsFromTracker)
 
     }
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        buttonsFunctions.onRequestPermissionsResult(this, requestCode, permissions, grantResults)
-        when (requestCode) {
-            SMS_PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    buttonsFunctions.initSmsReceiver(this)
-                }
-            }
-        }
-    }
+
 
 
         @SuppressLint("ServiceCast")
