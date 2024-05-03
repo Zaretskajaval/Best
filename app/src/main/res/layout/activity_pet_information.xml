@@ -1,29 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PetInformationActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPetInformation"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#FFD6EF"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:background="#FFEDE1">
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/backarrow"
-        app:subtitleTextColor="@color/white"
-        app:title="Информация о питомце"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:titleMargin="5dp"
-        app:titleMarginStart="30dp"
-        app:titleTextColor="@color/black" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarPetInformation"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FFD6EF"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/backarrow"
+            app:subtitleTextColor="@color/white"
+            app:title="Информация о питомце"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:titleMargin="5dp"
+            app:titleMarginStart="30dp"
+            app:titleTextColor="@color/black" />
 
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="80dp"
+            android:text="Кличка:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textViewName2"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Возраст:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewName3"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Пол:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName2" />
+
+        <TextView
+            android:id="@+id/textViewName4"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Вес:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName3" />
+
+        <TextView
+            android:id="@+id/textViewName5"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Порода:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName4" />
+
+        <TextView
+            android:id="@+id/textViewName6"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Окрас:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName5" />
+
+        <TextView
+            android:id="@+id/textViewName8"
+            android:layout_width="105dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Запись о приеме лекарственных препаратов:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDeasises" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises"
+            android:layout_width="96dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Заболевания:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName7" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises2"
+            android:layout_width="111dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="ФИО владельца:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName8" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises3"
+            android:layout_width="111dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Телефон владельца:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDeasises2" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises4"
+            android:layout_width="111dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Хирургические вмешательства:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDeasises3" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises6"
+            android:layout_width="126dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Данные о вакцинации за последний год (препарат и дата):"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDeasises5" />
+
+        <TextView
+            android:id="@+id/textViewNameDeasises5"
+            android:layout_width="132dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Дата последней дегельминтизации:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDeasises4" />
+
+        <TextView
+            android:id="@+id/textViewName7"
+            android:layout_width="89dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Номер чипа:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName6" />
+
+        <EditText
+            android:id="@+id/editTextTextName"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@id/textViewName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextAge"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
+
+        <EditText
+            android:id="@+id/editTextTextSex"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextAge" />
+
+        <EditText
+            android:id="@+id/editTextTextWeight"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName4"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextSex" />
+
+        <EditText
+            android:id="@+id/editTextTextBreed"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName5"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextWeight" />
+
+        <EditText
+            android:id="@+id/editTextTextColor"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName6"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextBreed" />
+
+        <EditText
+            android:id="@+id/editTextTextChipNumber"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="29dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewName7"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextColor" />
+
+        <EditText
+            android:id="@+id/editTextTextDiseases"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="22dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextChipNumber" />
+
+        <EditText
+            android:id="@+id/editTextTextFIO"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLineDrugs" />
+
+        <EditText
+            android:id="@+id/editTextTextPhoneNumber"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextFIO" />
+
+        <EditText
+            android:id="@+id/editTextTextPhoneVaccine"
+            android:layout_width="114dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises6"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateDeworming" />
+
+        <EditText
+            android:id="@+id/editTextTextPhoneVaccine2"
+            android:layout_width="114dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="4dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises6"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPhoneVaccine" />
+
+        <EditText
+            android:id="@+id/editTextTextSurgery"
+            android:layout_width="204dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises4"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPhoneNumber" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLineDrugs"
+            android:layout_width="204dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="13dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintStart_toEndOf="@+id/textViewName8"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextDiseases" />
+
+        <EditText
+            android:id="@+id/editTextDateDeworming"
+            android:layout_width="188dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="1dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toEndOf="@+id/textViewNameDeasises5"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextSurgery" />
+
+        <EditText
+            android:id="@+id/editTextDateVaccine"
+            android:layout_width="79dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextPhoneVaccine"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateDeworming" />
+
+        <EditText
+            android:id="@+id/editTextDateVaccine2"
+            android:layout_width="79dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextPhoneVaccine"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateVaccine" />
+
+        <ImageButton
+            android:id="@+id/imageButtonShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="60dp"
+            android:background="@android:color/transparent"             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateVaccine2"
+            app:srcCompat="@drawable/share" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPhoneVaccine2"
+            app:srcCompat="@drawable/download" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

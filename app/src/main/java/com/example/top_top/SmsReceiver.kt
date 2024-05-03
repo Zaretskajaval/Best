@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.telephony.SmsMessage
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -19,10 +20,6 @@ class SmsReceiver : BroadcastReceiver() {
 
     companion object {
         const val TRACKER_NUMBER = "+79213794299"
-        private var tempImageView: ImageView? = null
-        fun setTempImageView(imageView: ImageView) {
-            tempImageView = imageView
-        }
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -36,6 +33,7 @@ class SmsReceiver : BroadcastReceiver() {
                     val messageBody = message.messageBody
 
                     if (sender == TRACKER_NUMBER) {
+
                         (context as? Activity)?.finish()
                         // При получении SMS от указанного номера, открываем MapActivity
                         val intent = Intent(context, MapActivity::class.java)
@@ -44,6 +42,7 @@ class SmsReceiver : BroadcastReceiver() {
                         val sharedPreferences = context?.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
                         val substring = messageBody.substring(4, 7)
                         sharedPreferences?.edit()?.putString("chargePercent", substring)?.apply()
+
                     }
                 }
             }
@@ -54,4 +53,8 @@ class SmsReceiver : BroadcastReceiver() {
     fun unregister(context: Context?) {
         context?.unregisterReceiver(this)
     }
+
+
+
+
 }
